@@ -43,6 +43,7 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
+        window.location="Graficas.html";
 
         console.log('Received Event: ' + id);
     }
