@@ -83,6 +83,7 @@
         }
 
         function callAjax() {
+            alert("post")
             $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
                     .done(function(data) {
                         data = $.parseXML(data)
