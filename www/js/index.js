@@ -50,3 +50,4 @@ var app = {
 };
 
 app.initialize();
+//window.location="Graficas.html";
