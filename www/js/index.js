@@ -39,8 +39,7 @@ var app = {
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
         
-        
-        alert   (parentElement);
+       
         parentElement.setAttribute('style', 'display:block;');
         
         
