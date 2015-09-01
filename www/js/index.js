@@ -38,14 +38,15 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        var mainpage = parentElement.querySelector('#pageone');
+        
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-        window.location="Graficas.html";
+        mainpage.setAttribute('style', 'display:block;');
+        
+        
+        //window.location="Graficas.html";
 
-        console.log('Received Event: ' + id);
+        //console.log('Received Event: ' + id);
     }
 };
 
