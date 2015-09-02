@@ -152,13 +152,7 @@
             var data;
             var chart;
             var options = {
-                  animation: {duration: 1000,easing: 'out'},
-                  legend: { position: 'none' },
-                  width: '75%',
-                  theme: 'material',
-                  chartArea: { width: '75%', height: '75%' },
-                  vAxis: { minValue: 0, maxValue: GMAXVALUE },
-                  hAxis: { minValue: 0, maxValue: GMAXVALUE }
+                  animation: {duration: 1000,easing: 'out'}
               };
             function init(blRotar) {
                 if (blRotar == null){
@@ -170,9 +164,27 @@
                 }
                 if (GTIPO == 2) {
                     if (!blRotar){
+                         options = {
+                            animation: {duration: 1000,easing: 'out'},
+                            legend: { position: 'none' },
+                            width: '75%',
+                            theme: 'material',
+                            chartArea: { width: '75%', height: '65%' },
+                            vAxis: { minValue: 0, maxValue: GMAXVALUE },
+                            hAxis: { minValue: 0, maxValue: GMAXVALUE }
+                        };
                         chart = new google.visualization.ColumnChart(document.getElementById('divObject'));
                     }
                     else{
+                         options = {
+                            animation: {duration: 1000,easing: 'out'},
+                            legend: { position: 'none' },
+                            width: '75%',
+                            theme: 'material',
+                            chartArea: { width: '75%', height: '75%' },
+                            vAxis: { minValue: 0, maxValue: GMAXVALUE },
+                            hAxis: { minValue: 0, maxValue: GMAXVALUE }
+                        };
                         chart = new google.visualization.BarChart(document.getElementById('divObject'));
                     }
                 }
