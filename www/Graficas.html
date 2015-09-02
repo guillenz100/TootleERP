@@ -137,7 +137,7 @@
                     if (parseFloat(objOT.find(strField3).text()) > GMAXVALUE)
                             GMAXVALUE = parseFloat(objOT.find(strField3).text());
                     }
-                    init(false);
+                    init(true);
                     })
 
                     }
@@ -188,7 +188,7 @@
                             setTimeout(drawObject, 1000);
                     }
 
-                       
+
             function doOnOrientationChange()
             {
             switch (window.orientation)
@@ -204,7 +204,7 @@
             }
 
             window.addEventListener('orientationchange', doOnOrientationChange);
-                
+
 
 
 
