@@ -38,16 +38,11 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
-        
-       
         parentElement.setAttribute('style', 'display:block;');
-        
-        
-        //window.location="Graficas.html";
-
+        //window.location="Graficas.html"
         //console.log('Received Event: ' + id);
     }
 };
 
-app.initialize();
-//app.receivedEvent("pageone");
+//app.initialize();
+app.receivedEvent("pageone");
