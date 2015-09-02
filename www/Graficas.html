@@ -137,7 +137,7 @@
                     if (parseFloat(objOT.find(strField3).text()) > GMAXVALUE)
                             GMAXVALUE = parseFloat(objOT.find(strField3).text());
                     }
-                    init(true);
+                    init(false);
                     })
 
                     }
@@ -188,23 +188,23 @@
                             setTimeout(drawObject, 1000);
                     }
 
-                       /*
+                       
             function doOnOrientationChange()
             {
             switch (window.orientation)
             {
             case - 90:
                     case 90:
-                    init(true);
+                    init(false);
                     break;
                     default:
-                    init(false);
+                    init(true);
                     break;
             }
             }
 
             window.addEventListener('orientationchange', doOnOrientationChange);
-                */
+                
 
 
 
