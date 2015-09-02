@@ -148,23 +148,23 @@
             google.load("visualization", "1", { packages: ["table"] });
             google.setOnLoadCallback(callAjax);
             var GBLROTAR;
-
+            var blFirstLoad = true;
+            var data;
+            var chart;
+            var options = {
+                  animation: {duration: 1000,easing: 'out'},
+                  legend: { position: 'none' },
+                  width: '75%',
+                  theme: 'material',
+                  chartArea: { width: '75%', height: '75%' },
+                  vAxis: { minValue: 0, maxValue: GMAXVALUE },
+                  hAxis: { minValue: 0, maxValue: GMAXVALUE }
+              };
             function init(blRotar) {
                 if (blRotar == null){
-                 blRotar = false;
+                    blRotar = false;
                 }
-                var blFirstLoad = true;
-                var options = {
-                    animation: {duration: 1000,easing: 'out'},
-                    legend: { position: 'none' },
-                    width: '75%',
-                    theme: 'material',
-                    chartArea: { width: '75%', height: '75%' },
-                    vAxis: { minValue: 0, maxValue: GMAXVALUE },
-                    hAxis: { minValue: 0, maxValue: GMAXVALUE }
-                };
-                var data;
-                var chart;
+              
                 if (GTIPO == 1) {
                     chart = new google.visualization.Table(document.getElementById('divObject'));
                 }
@@ -176,6 +176,10 @@
                         chart = new google.visualization.BarChart(document.getElementById('divObject'));
                     }
                 }
+                
+                drawObject();
+                setTimeout(drawObject, 1000);
+
             }
 
 
@@ -191,9 +195,6 @@
             }
 
                     
-            drawObject();
-            setTimeout(drawObject, 1000);
-
 
 
             function doOnOrientationChange(){
