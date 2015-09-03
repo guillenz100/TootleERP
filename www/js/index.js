@@ -44,5 +44,5 @@ var app = {
     }
 };
 
-app.initialize();
-//app.receivedEvent("pageone");
+//app.initialize();
+app.receivedEvent("pageone");
