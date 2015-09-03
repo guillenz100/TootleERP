@@ -5,6 +5,7 @@ var GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/P
 var GSTRFIELD1 = "MES";
 var GSTRFIELD2 = "ANTERIOR";
 var GSTRFIELD3 = "ACTUAL";
+var GWIDTH="85%";
 
 var GMAXVALUE = 0;
 var GARR = [];
@@ -17,9 +18,9 @@ var GGOOGLECHART;
 var GOPTIONS = {
     animation: {duration: 1000,easing: 'out'},
     legend: { position: 'none' },
-    width: '85%',
+    width: "75%",
     theme: 'material',
-    chartArea: { width: '85%', height: '75%' },
+    chartArea: { width: "75%", height: '75%' },
     vAxis: { minValue: 0, maxValue: GMAXVALUE },
     hAxis: { minValue: 0, maxValue: GMAXVALUE }
 };
