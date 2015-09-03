@@ -23,7 +23,7 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <title>Graficas</title>
+        <title>Ventas</title>
         <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['bar']}]}"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="cordova.js"></script>
@@ -32,7 +32,7 @@
       
     </head>
     <body>
-        <div data-role="page" id="pagtwo"  class="app">
+        <div class="app fullsize">
             <div style="text-align:center;" class="logo">
                 <img id="loader"  src="img/ajax-loader.gif" alt=""/>
             </div>
@@ -138,7 +138,10 @@
                 chartArea: { width: '75%', height: '75%' },
                 vAxis: { minValue: 0, maxValue: GMAXVALUE },
                 hAxis: { minValue: 0, maxValue: GMAXVALUE }
-                };
+            };
+                
+                
+                
             function init(blRotar) {
                 if (blRotar == null){
                     blRotar = false;
@@ -171,9 +174,7 @@
                 }
                 chart.draw(data, options);
                 blFirstLoad = false;
-            }
-
-                    
+            }        
 
 
             function doOnOrientationChange(){
