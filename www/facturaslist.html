@@ -16,7 +16,7 @@
 <!-- Home -->
 <div data-role="page" id="page1">
     <div data-role="content" >
-        <ul data-role="listview" data-autodividers="true" id="listFacturas" data-filter="true"  style="opacity:1.0;" data-inset="true">
+        <ul data-role="listview" data-autodividers="true" id="listFacturas" data-filter="true"  data-inset="true">
         </ul>
     </div>
 </div>
@@ -31,38 +31,64 @@
     GSTRFIELD2 = "FACTURA";
     GSTRFIELD3 = "TOTAL";
     
+    var GARR = [];
+    var GBLINFORMACIONCARGADA=false;
+    
     GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intConsulta=3&intEmpresa=1";
+    
+    function localData(){
+        $('#listFacturas').empty();
+        for(i=0; i<GARR.length; i++){
+            document.querySelector('#listFacturas').innerHTML += "<li><h3>" +GARR[0][i]+"</h3>"+
+                                "<p>Factura: "+GARR[1][i]+"</p>"+
+                                "<p>Total: "+parseFloat(GARR[2][i]).toFixed(2)+"</p>"+
+                                "</li>";
+        }
+        $('#listFacturas').listview('refresh');
+    }
+    
+    function getData(){
+         if (!GBLINFORMACIONCARGADA){
+            callAjax();
+        }else{
+            localData();
+        }
+    }
+    
     function callAjax() {
         $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
             .done(function(data) {
                 data = $.parseXML(data)
                 $(data).find("Table").each(function() {
                     var objOT = $(this);
-                    document.querySelector('#listFacturas').innerHTML += "<li><h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
-                            "<p>Factura: "+objOT.find(GSTRFIELD2).text()+"</p>"+
-                            "<p>Total: "+parseFloat(objOT.find(GSTRFIELD3).text()).toFixed(2)+"</p>"+
-                            "</li>";
+                        document.querySelector('#listFacturas').innerHTML += "<li><h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
+                                "<p>Factura: "+objOT.find(GSTRFIELD2).text()+"</p>"+
+                                "<p>Total: "+parseFloat(objOT.find(GSTRFIELD3).text()).toFixed(2)+"</p>"+
+                                "</li>";
+                        GARR.push(objOT.find(GSTRFIELD1).text(),objOT.find(GSTRFIELD2).text(),objOT.find(GSTRFIELD3).text());
+                   
                 })
                 $('#listFacturas').listview('refresh');
+                GBLINFORMACIONCARGADA=true;
             }
         );
     }
-    callAjax();
+    getData();
 
 
     function doOnOrientationChange(){
         switch (window.orientation){
         case - 90:
             case 90:
-                $('#listFacturas').listview('refresh');
+                getData();
                 break;
             default:
-                $('#listFacturas').listview('refresh');
+                getData();
                 break;
         }
     }
     window.addEventListener('orientationchange', doOnOrientationChange);
-        
+    setTimeout(getData,4000);
 </script>
 </body>
 </html>
