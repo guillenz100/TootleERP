@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- Home -->
-<div data-role="page" id="page1" width="100%">
+<div data-role="page" id="page1">
     <div data-role="content" >
         <ul data-role="listview" data-autodividers="true" id="listFacturas" data-filter="true"  data-inset="true">
             <li><img src="img/ajax-loader.gif" alt=""/></li>
@@ -28,11 +28,13 @@
     var GSTRFIELD2 = "";
     var GSTRFIELD3 = "";
     var GSTRFIELD4 = "";
+    var GSTRFIELD5 = "";
     
     GSTRFIELD1 = "STRNOMBREFACTURACION";
     GSTRFIELD2 = "FACTURA";
     GSTRFIELD3 = "TOTAL";
     GSTRFIELD4 = "FECHA";
+    GSTRFIELD5 = "ESTATUS";
     
     var GSTRDATOS;
     var GBLINFORMACIONCARGADA=false;
@@ -60,10 +62,18 @@
         $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
             .done(function(data) {
                 data = $.parseXML(data);
+                var strEstatus="";
                 $('#listFacturas').empty();
                 $(data).find("Table").each(function() {
                     var objOT = $(this);
-                        document.querySelector('#listFacturas').innerHTML += "<li><h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
+                        if (objOT.find(GSTRFIELD5).text()=="2")
+                            strEstatus="green";
+                        else
+                            strEstatus="red";
+                        document.querySelector('#listFacturas').innerHTML += 
+                                "<li>"+
+                                "<img src='img/"+strEstatus+"circle.png'  class='ui-li-icon ui-corner-none' alt='' />"+
+                                "<h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
                                 "<p>Fecha "+objOT.find(GSTRFIELD4).text()+"</p>"+
                                 "<p>Factura: "+objOT.find(GSTRFIELD2).text()+"</p>"+
                                 "<p>Total: "+numberWithCommas(parseFloat(objOT.find(GSTRFIELD3).text()).toFixed(2))+"</p>"+
