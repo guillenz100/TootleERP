@@ -17,7 +17,7 @@
 <div data-role="page" id="page1">
     <div data-role="content" >
         <ul data-role="listview" data-autodividers="true" id="listFacturas" data-filter="true"  data-inset="true">
-            <li>Ejemplo</li>
+            <li><img src="img/ajax-loader.gif" alt=""/></li>
         </ul>
     </div>
 </div>
@@ -55,6 +55,7 @@
         $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
             .done(function(data) {
                 data = $.parseXML(data);
+                $('#listFacturas').empty();
                 $(data).find("Table").each(function() {
                     var objOT = $(this);
                         document.querySelector('#listFacturas').innerHTML += "<li><h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
