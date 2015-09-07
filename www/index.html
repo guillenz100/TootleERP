@@ -7,6 +7,14 @@
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <link href="css/index.css" rel="stylesheet" type="text/css"/>
+        <style>
+        iframe {
+            overflow: scroll;
+            width: 1349px;
+            height: 100%;
+            border: 1px solid black;
+        }
+        </style>
     </head>
     <body>
         <div class="logo" id="logo"> 
@@ -26,7 +34,7 @@
                     $("#main").append("<iframe id='ifr' seamless frameborder='0' style='position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;' src='loading.html' />");
                       */
                     $("#main").empty();
-                    $("#main").append("<iframe id='ifr' seamless frameborder='0' style='position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:95%; border:none; margin:0; padding:0; overflow:scroll; ' src='" + strPage + "' />");
+                    $("#main").append("<iframe id='ifr' seamless frameborder='0'  src='" + strPage + "' />");
                 }
             }
             
