@@ -27,10 +27,12 @@
     var GSTRFIELD1 = "";
     var GSTRFIELD2 = "";
     var GSTRFIELD3 = "";
+    var GSTRFIELD4 = "";
     
     GSTRFIELD1 = "STRNOMBREFACTURACION";
     GSTRFIELD2 = "FACTURA";
     GSTRFIELD3 = "TOTAL";
+    GSTRFIELD4 = "FECHA";
     
     var GSTRDATOS;
     var GBLINFORMACIONCARGADA=false;
@@ -51,6 +53,9 @@
         }
     }
     
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     function callAjax() {
         $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
             .done(function(data) {
@@ -59,13 +64,21 @@
                 $(data).find("Table").each(function() {
                     var objOT = $(this);
                         document.querySelector('#listFacturas').innerHTML += "<li><h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
+                                "<p>Fecha "+objOT.find(GSTRFIELD4).text()+"</p>"+
                                 "<p>Factura: "+objOT.find(GSTRFIELD2).text()+"</p>"+
-                                "<p>Total: "+parseFloat(objOT.find(GSTRFIELD3).text()).toFixed(2)+"</p>"+
+                                "<p>Total: "+numberWithCommas(parseFloat(objOT.find(GSTRFIELD3).text()).toFixed(2))+"</p>"+
                                 "</li>";
                         
                    
                 })
                 GSTRDATOS=document.querySelector('#listFacturas').innerHTML;
+                $( "#listFacturas" ).listview({
+                    autodividers: true,
+                    autodividersSelector: function ( li ) {
+                      var out = "LISTADO DE FACTURAS";
+                      return out;
+                    }
+                  });
                 $('#listFacturas').listview('refresh');
                 GBLINFORMACIONCARGADA=true;
             }
