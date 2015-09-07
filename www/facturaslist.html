@@ -55,6 +55,20 @@
     }
     callAjax();
 
+
+    function doOnOrientationChange(){
+        switch (window.orientation){
+        case - 90:
+            case 90:
+                $('#listFacturas').listview('refresh');
+                break;
+            default:
+                $('#listFacturas').listview('refresh');
+                break;
+        }
+    }
+    window.addEventListener('orientationchange', doOnOrientationChange);
+        
 </script>
 </body>
 </html>

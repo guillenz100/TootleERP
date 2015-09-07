@@ -19,3 +19,28 @@
     left: 0;
     text-align: center;
 }
+
+.window_srollable {
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    top:0px; 
+    left:0px; 
+    bottom:0px; 
+    right:0px;
+    margin:0; padding:0; 
+}
+.window_seamless {
+    position:fixed; 
+    top:0px; 
+    left:0px; 
+    bottom:0px; 
+    right:0px; 
+    width:100%; 
+    height:95%; 
+    border:none; 
+    margin:0; 
+    padding:0; 
+    overflow:hidden;
+}
