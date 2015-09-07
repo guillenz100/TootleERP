@@ -95,6 +95,16 @@ function callAjax() {
                     if (parseFloat(objOT.find(GSTRFIELD3).text()) > GMAXVALUE)
                         GMAXVALUE = parseFloat(objOT.find(GSTRFIELD3).text());
                 }
+                //Se actualiza max value
+                GOPTIONS = {
+                    animation: {duration: 1000,easing: 'out'},
+                    legend: { position: 'none' },
+                    width: "75%",
+                    theme: 'material',
+                    chartArea: { width: "75%", height: '75%' },
+                    vAxis: { minValue: 0, maxValue: GMAXVALUE },
+                    hAxis: { minValue: 0, maxValue: GMAXVALUE }
+                };
                 init(true);
             })
         }
@@ -118,8 +128,9 @@ function init(blRotar) {
             GGOOGLECHART = new google.visualization.BarChart(document.getElementById('divObject'));
         }
     }
-
+    GBLFIRSTLOAD=true;
     drawObject();
+    GBLFIRSTLOAD = false;
     setTimeout(drawObject, 1000);
 
 }
@@ -133,7 +144,7 @@ function drawObject() {
         GDATA = new google.visualization.arrayToDataTable(GARR);
     }
     GGOOGLECHART.draw(GDATA, GOPTIONS);
-    GBLFIRSTLOAD = false;
+    
 }        
 
 google.load("visualization", "1", { packages: ["corechart"] });
